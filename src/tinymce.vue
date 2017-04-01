@@ -30,6 +30,9 @@
             let options = {}
             let s1 = new Function()
             let config = (editor) => {
+                editor.on('click', (e) => {
+                    editor.nodeChanged();
+                });
                 editor.on('NodeChange Change KeyUp', (e) => {
                     this.$emit('input', tinymce.get(this.id).getContent())
                     this.$emit('change', tinymce.get(this.id), tinymce.get(this.id).getContent())
